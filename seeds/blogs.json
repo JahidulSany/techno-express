@@ -1,0 +1,144 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Top JavaScript Frameworks in 2026",
+      "content": "A detailed comparison of React, Vue, and Angular for modern web apps.",
+      "userId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "title": "Understanding Node.js Event Loop",
+      "content": "An easy explanation of how the Node.js event loop works.",
+      "userId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "title": "How AI is Powering Smart Assistants",
+      "content": "Exploring machine learning behind Alexa and Google Assistant.",
+      "userId": 2,
+      "categoryId": 2
+    },
+    {
+      "id": 4,
+      "title": "Beginner Guide to Machine Learning",
+      "content": "Basic concepts every aspiring AI developer should know.",
+      "userId": 2,
+      "categoryId": 2
+    },
+    {
+      "id": 5,
+      "title": "Building REST APIs with Express",
+      "content": "Step-by-step guide to building scalable REST APIs.",
+      "userId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "title": "Creating Your First Android App",
+      "content": "Learn how to build and run your first Android project.",
+      "userId": 1,
+      "categoryId": 3
+    },
+    {
+      "id": 7,
+      "title": "iOS vs Android Development",
+      "content": "Comparing tools, languages, and opportunities.",
+      "userId": 3,
+      "categoryId": 3
+    },
+    {
+      "id": 8,
+      "title": "iPhone 16 Pro Review",
+      "content": "Performance, battery life, and camera analysis.",
+      "userId": 3,
+      "categoryId": 4
+    },
+    {
+      "id": 9,
+      "title": "Top Laptops for Developers",
+      "content": "Best laptops for coding and productivity in 2026.",
+      "userId": 3,
+      "categoryId": 4
+    },
+    {
+      "id": 10,
+      "title": "How to Secure Your Web Application",
+      "content": "Essential security practices for modern web apps.",
+      "userId": 2,
+      "categoryId": 5
+    },
+    {
+      "id": 11,
+      "title": "Understanding JWT Authentication",
+      "content": "How JSON Web Tokens work in backend systems.",
+      "userId": 2,
+      "categoryId": 5
+    },
+    {
+      "id": 12,
+      "title": "10 JavaScript Tips Every Developer Should Know",
+      "content": "Boost productivity with these useful JavaScript tricks.",
+      "userId": 1,
+      "categoryId": 6
+    },
+    {
+      "id": 13,
+      "title": "Debugging Like a Pro",
+      "content": "Techniques to quickly find and fix bugs.",
+      "userId": 1,
+      "categoryId": 6
+    },
+    {
+      "id": 14,
+      "title": "Introduction to ChatGPT APIs",
+      "content": "How developers can integrate AI chat systems.",
+      "userId": 2,
+      "categoryId": 2
+    },
+    {
+      "id": 15,
+      "title": "Progressive Web Apps Explained",
+      "content": "Why PWAs are the future of web applications.",
+      "userId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 16,
+      "title": "Top Cybersecurity Threats in 2026",
+      "content": "Emerging security risks and how to prevent them.",
+      "userId": 2,
+      "categoryId": 5
+    },
+    {
+      "id": 17,
+      "title": "Best VS Code Extensions for Developers",
+      "content": "Improve your workflow with these extensions.",
+      "userId": 1,
+      "categoryId": 6
+    },
+    {
+      "id": 18,
+      "title": "AI in Healthcare",
+      "content": "How artificial intelligence is transforming medicine.",
+      "userId": 2,
+      "categoryId": 2
+    },
+    {
+      "id": 19,
+      "title": "Smartwatch Buying Guide",
+      "content": "Things to consider before purchasing a smartwatch.",
+      "userId": 3,
+      "categoryId": 4
+    },
+    {
+      "id": 20,
+      "title": "Cross-Platform Mobile Development",
+      "content": "Using Flutter and React Native to build apps faster.",
+      "userId": 1,
+      "categoryId": 3
+    }
+  ]
+}

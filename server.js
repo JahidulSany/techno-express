@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 
 const sequelize = require('./config/connection');
-// const routes = require('./routes');
+const routes = require('./routes');
 
 // Initialize Express application
 const app = express();
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // Add routes
-// app.use(routes);
+app.use(routes);
 
 // Sync database
 sequelize.sync({ force: rebuild }).then(() => {
