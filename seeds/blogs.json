@@ -1,4 +1,17 @@
 {
+  "users": [
+    { "id": 1, "username": "alex_codes", "email": "alex@technoexpress.com", "password": "hashed_password_1" },
+    { "id": 2, "username": "nina_ai", "email": "nina@technoexpress.com", "password": "hashed_password_2" },
+    { "id": 3, "username": "omar_reviews", "email": "omar@technoexpress.com", "password": "hashed_password_3" }
+  ],
+  "categories": [
+    { "id": 1, "name": "Web Development" },
+    { "id": 2, "name": "Artificial Intelligence" },
+    { "id": 3, "name": "Mobile Development" },
+    { "id": 4, "name": "Gadgets" },
+    { "id": 5, "name": "Cybersecurity" },
+    { "id": 6, "name": "Programming Tips" }
+  ],
   "posts": [
     {
       "id": 1,
