@@ -4,10 +4,10 @@ const SECRET_KEY = process.env.JWT_SECRET;
 const expiration = '2h';
 
 const authMiddleware = (req, res, next) => {
-  let token = req.body.token || req.query.token || req.headers.authorization;
+  let token = req.body?.token || req.query?.token || req.headers?.authorization;
   console.log('token: ' + token);
 
-  if (req.headers.authorization) {
+  if (token && req.headers.authorization) {
     token = token.split(' ').pop().trim();
   }
 

@@ -8,8 +8,12 @@ const { authMiddleware } = require('../utils/auth');
 // Route to add a new post
 router.post('/', authMiddleware, async (req, res) => {
   try {
-    const { title, content, userId } = req.body;
-    const post = await Post.create({ title, content, userId });
+    const { title, content } = req.body;
+    const post = await Post.create({
+      title,
+      content,
+      userId: req.user.id,
+    });
 
     res.status(201).json(post);
   } catch (error) {
