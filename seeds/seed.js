@@ -12,9 +12,9 @@ const { users, posts, categories } = blogsData;
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await User.bulkCreate(users);
-  await Category.bulkCreate(categories);
-  await Post.bulkCreate(posts);
+  await User.bulkCreate(users, { individualHooks: true });
+  await Category.bulkCreate(categories, { individualHooks: true });
+  await Post.bulkCreate(posts, { individualHooks: true });
 
   process.exit(0);
 };

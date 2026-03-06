@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.get("/", authMiddleware, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const users = await User.findAll();
     res.status(200).json(users);
@@ -69,6 +69,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 router.post("/login", async (req, res) => {
   try {

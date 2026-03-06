@@ -20,6 +20,7 @@ User.hasMany(Post, {
 
 Post.belongsTo(User, {
   foreignKey: "userId",
+  as: "author",
 });
 
 module.exports = {
