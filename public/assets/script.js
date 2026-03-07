@@ -143,7 +143,7 @@ function openEditModal(post) {
   document.getElementById('modal-post-title').value = post.title;
   document.getElementById('modal-post-content').value = post.content;
   document.getElementById('modal-categories').value = post.categoryId;
-  
+
   const myModal = new bootstrap.Modal(document.getElementById('editPostModal'));
   myModal.show();
 }
@@ -162,16 +162,29 @@ function saveButton() {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ title, content, categoryId }),
+  }).then((res) => {
+    if (res.ok) {
+      alert('Post updated');
+      // Close modal
+      const modalElement = document.getElementById('editPostModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      modalInstance.hide();
+      // Refresh list
+      fetchPosts();
+    }
+  });
+}
+
+function deletePost(id) {
+  fetch(`http://localhost:3001/api/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
-    .then((res) => {
-      if (res.ok) {
-        alert('Post updated');
-        // Close modal
-        const modalElement = document.getElementById('editPostModal');
-        const modalInstance = bootstrap.Modal.getInstance(modalElement);
-        modalInstance.hide();
-        // Refresh list
-        fetchPosts();
-      }
+    .then((res) => res.json())
+    .then(() => {
+      alert('Post deleted');
+      fetchPosts();
     });
 }
