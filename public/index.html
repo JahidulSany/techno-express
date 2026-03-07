@@ -48,8 +48,7 @@
       <br /><br />
       <button onclick="createPost()">Submit Post</button>
       <hr />
-      <h2>Posts</h2>
-      <button onclick="fetchPosts()">Load Posts</button>
+      <h2>Blog Posts Categories</h2>
       <div id="posts"></div>
     </div>
 
@@ -67,28 +66,28 @@
           </div>
           <div class="modal-body">
             <form id="editPostForm">
-              <input type="hidden" id="edit-post-id" />
-              <div class="mb-3">
+              <input type="hidden" id="editPostId" />
+              <div class="text-start mb-3">
                 <label class="form-label">Title</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="modal-post-title"
+                  id="modalPostTitle"
                   required
                 />
               </div>
-              <div class="mb-3">
+              <div class="text-start mb-3">
                 <label class="form-label">Content</label>
                 <textarea
                   class="form-control"
-                  id="modal-post-content"
+                  id="modalPostContent"
                   rows="4"
                   required
                 ></textarea>
               </div>
-              <div class="mb-3">
+              <div class="text-start mb-3">
                 <label class="form-label">Category</label>
-                <select class="form-select" id="modal-categories" required>
+                <select class="form-select" id="modalCategories" required>
                   <option value="1">Web Development</option>
                   <option value="2">Artificial Intelligence</option>
                   <option value="3">Mobile Development</option>
@@ -109,7 +108,7 @@
             </button>
             <button
               type="button"
-              onclick="saveButton()"
+              onclick="saveEditedPost()"
               class="btn btn-success"
             >
               Save Changes

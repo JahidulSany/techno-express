@@ -137,23 +137,29 @@ function createPost() {
   document.getElementById('post-content').value = '';
 }
 
-// 1. Fill the modal with data and show it
+// Edit Post Modal's DOM Elements
+const editPostId = document.getElementById('editPostId');
+const modalPostTitle = document.getElementById('modalPostTitle');
+const modalPostContent = document.getElementById('modalPostContent');
+const modalPostCategories = document.getElementById('modalCategories');
+
+// Fill the modal with data and show it
 function openEditModal(post) {
-  document.getElementById('edit-post-id').value = post.id;
-  document.getElementById('modal-post-title').value = post.title;
-  document.getElementById('modal-post-content').value = post.content;
-  document.getElementById('modal-categories').value = post.categoryId;
+  editPostId.value = post.id;
+  modalPostTitle.value = post.title;
+  modalPostContent.value = post.content;
+  modalPostCategories.value = post.categoryId;
 
   const myModal = new bootstrap.Modal(document.getElementById('editPostModal'));
   myModal.show();
 }
 
-// 2. Collect data from modal and send PUT request
-function saveButton() {
-  const id = document.getElementById('edit-post-id').value;
-  const title = document.getElementById('modal-post-title').value;
-  const content = document.getElementById('modal-post-content').value;
-  const categoryId = document.getElementById('modal-categories').value;
+// Collect data from modal and send PUT request
+function saveEditedPost() {
+  const id = editPostId.value;
+  const title = modalPostTitle.value;
+  const content = modalPostContent.value;
+  const categoryId = modalPostCategories.value;
 
   fetch(`http://localhost:3001/api/posts/${id}`, {
     method: 'PUT',
