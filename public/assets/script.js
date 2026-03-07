@@ -91,8 +91,13 @@ function logout() {
   });
 }
 
-function fetchPosts() {
-  fetch('http://localhost:3001/api/posts', {
+function fetchPosts(categoryId = 'all'.toLocaleLowerCase()) {
+  let url = 'http://localhost:3001/api/posts';
+
+  if (categoryId !== 'all') {
+    url = url + `?categoryId=${categoryId}`;
+  }
+  fetch(url, {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` },
   })
@@ -199,3 +204,30 @@ function deletePost(id) {
       fetchPosts();
     });
 }
+
+// Filter Posts by Category
+const filterButtons = document.querySelectorAll('#category-filters button');
+
+filterButtons.forEach((singleFilterButton) => {
+  singleFilterButton.addEventListener('click', (event) => {
+    console.log(event.target.dataset);
+
+    const categoryId = event.target.dataset.category;
+    
+    console.log(categoryId);
+    
+    // remove active class
+    document
+      .querySelectorAll('#category-filters button')
+      .forEach((button) => button.classList.remove('active', 'btn-primary'));
+
+    document
+      .querySelectorAll('#category-filters button')
+      .forEach((button) => button.classList.add('btn-outline-primary'));
+
+    event.target.classList.remove('btn-outline-primary');
+    event.target.classList.add('btn-primary', 'active');
+
+    fetchPosts(categoryId);
+  });
+});

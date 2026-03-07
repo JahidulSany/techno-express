@@ -39,7 +39,7 @@ img {
 }
 
 input {
-  width: 50%;
+  width: 100%;
   margin: 10px 0;
   padding: 10px;
 }
@@ -47,7 +47,7 @@ input {
 input[type='text'],
 select,
 textarea {
-  width: 50%;
+  width: 100%;
   padding: 12px 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -61,7 +61,7 @@ textarea {
 }
 
 input[type='submit'] {
-  width: 50%;
+  width: 100%;
   border: none;
   background: #4aaaa5;
   padding: 12px 20px;
