@@ -1,5 +1,16 @@
 let token = localStorage.getItem('authToken');
 
+document.addEventListener('DOMContentLoaded', () => {
+  if (token) {
+    document.getElementById('auth-container').classList.add('hidden');
+    document.getElementById('app-container').classList.remove('hidden');
+    fetchPosts();
+  } else {
+    document.getElementById('auth-container').classList.remove('hidden');
+    document.getElementById('app-container').classList.add('hidden');
+  }
+});
+
 function register() {
   const username = document.getElementById('username').value;
   const email = document.getElementById('email').value;
@@ -82,7 +93,6 @@ function fetchPosts() {
   })
     .then((res) => res.json())
     .then((posts) => {
-      console.log(posts);
       const postsContainer = document.getElementById('posts');
       postsContainer.innerHTML = '';
       posts.forEach((post) => {
@@ -90,8 +100,10 @@ function fetchPosts() {
         article.innerHTML = `<h3>${post.title}</h3><p>${
           post.content
         }</p><small>By: ${post.userId} on ${new Date(
-          post.createdAt,
-        ).toLocaleString()}</small>`;
+          post.createdOn,
+        ).toLocaleString()}</small>
+        <button onclick="editPost">Edit</button> <button onclick="deletePost">Delete</button>
+        `;
         postsContainer.appendChild(article);
       });
     });
@@ -100,7 +112,8 @@ function fetchPosts() {
 function createPost() {
   const title = document.getElementById('post-title').value;
   const content = document.getElementById('post-content').value;
-  if (!title || !content) {
+  const categoryId = document.getElementById('categories').value;
+  if (!title || !content || !categoryId) {
     alert('You must enter value');
     return;
   }
@@ -110,7 +123,7 @@ function createPost() {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title, content }),
+    body: JSON.stringify({ title, content, categoryId }),
   })
     .then((res) => res.json())
     .then(() => {
@@ -119,4 +132,12 @@ function createPost() {
     });
   document.getElementById('post-title').value = '';
   document.getElementById('post-content').value = '';
+}
+
+function editPost(){
+
+}
+
+function deletePost(){
+    
 }

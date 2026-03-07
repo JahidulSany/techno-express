@@ -1,42 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechnoExpress</title>
-    <link rel="stylesheet" href="./assets/style.css">
-</head>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container" id="auth-container">
-        <h2>Register</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="register()">Register</button>
-        <hr>
-        <h2>Login</h2>
-        <input type="email" id="login-email" placeholder="Email">
-        <input type="password" id="login-password" placeholder="Password">
-        <button onclick="login()">Login</button>
+      <h2>Register</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="register()">Register</button>
+      <hr />
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email" />
+      <input type="password" id="login-password" placeholder="Password" />
+      <button onclick="login()">Login</button>
     </div>
 
     <div class="container hidden" id="app-container">
-        <h2>Welcome</h2>
-        <button onclick="logout()">Logout</button>
-        <hr>
-        <h2>Create a Post</h2>
-        <input type="text" id="post-title" placeholder="Title" required>
-        <textarea id="post-content" placeholder="Content" required></textarea>
-        <button onclick="createPost()">Submit Post</button>
-        <hr>
-        <h2>Posts</h2>
-        <button onclick="fetchPosts()">Load Posts</button>
-        <div id="posts"></div>
+      <h2>Welcome</h2>
+      <button onclick="logout()">Logout</button>
+      <hr />
+      <h2>Create a Post</h2>
+      <input type="text" id="post-title" placeholder="Title" required />
+      <textarea id="post-content" placeholder="Content" required></textarea>
+      <select name="categories" id="categories" required>
+        <option value='1'>Web Development</option>
+        <option value='2'>Artificial Intelligence</option>
+        <option value='3'>Mobile Development</option>
+        <option value='4'>Gadgets</option>
+        <option value='5'>Cybersecurity</option>
+        <option value='6'>Programming Tips</option>
+      </select>
+      <br /><br />
+      <button onclick="createPost()">Submit Post</button>
+      <hr />
+      <h2>Posts</h2>
+      <button onclick="fetchPosts()">Load Posts</button>
+      <div id="posts"></div>
     </div>
 
     <script src="./assets/script.js"></script>
-</body>
-
+  </body>
 </html>
