@@ -1,77 +1,78 @@
 // create a new router
-const router = require("express").Router();
+const router = require('express').Router();
 
 // import the models
-const { Category } = require("../models/index");
+const { Category } = require('../models/index');
 
 // Route to add a new post
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { name } = req.body;
     const category = await Category.create({ name });
     res.status(201).json(category);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error adding category", error: error });
+    res.status(500).json({ message: 'Error adding category', error: error });
   }
 });
 
 // Route to get all posts
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    console.log("Getting all categories");
+    console.log('Getting all categories');
     const categories = await Category.findAll();
     console.log(categories);
     res.json(categories);
   } catch (error) {
-    res.status(500).json({ message: "Error adding categories", error: error });
+    res.status(500).json({ message: 'Error adding categories', error: error });
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const category = await Category.findByPk(req.params.id);
     if (!category) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ message: 'Category not found' });
     }
     res.json(category);
   } catch (error) {
-    res.status(500).json({ error: "Error retrieving category" });
+    res
+      .status(500)
+      .json({ message: 'Error retrieving category', error: error });
   }
 });
 
 // Route to update a category
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const { name } = req.body;
     const post = await Category.update(
       { name },
-      { where: { id: req.params.id } }
+      { where: { id: req.params.id } },
     );
     res.json(post);
   } catch (error) {
-    res.status(500).json({ error: "Error updating category" });
+    res.status(500).json({ message: 'Error updating category', error: error });
   }
 });
 
 // Route to delete a category
 
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const category = await Category.destroy({
       where: { id: req.params.id },
     });
 
     if (!category) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ message: 'Category not found' });
     }
 
-    res.json({ message: "Category deleted successfully" });
+    res.json({ message: 'Category deleted successfully' });
   } catch (error) {
-    res.status(500).json({ message: "Error deleting category" });
+    res.status(500).json({ message: 'Error deleting category', error: error });
   }
 });
 
 // export the router
 module.exports = router;
-

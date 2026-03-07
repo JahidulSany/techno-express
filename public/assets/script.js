@@ -216,7 +216,6 @@ filterButtons.forEach((singleFilterButton) => {
     
     console.log(categoryId);
     
-    // remove active class
     document
       .querySelectorAll('#category-filters button')
       .forEach((button) => button.classList.remove('active', 'btn-primary'));
