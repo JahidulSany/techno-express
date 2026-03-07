@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechnoExpress</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
 
@@ -29,12 +38,12 @@
       <input type="text" id="post-title" placeholder="Title" required />
       <textarea id="post-content" placeholder="Content" required></textarea>
       <select name="categories" id="categories" required>
-        <option value='1'>Web Development</option>
-        <option value='2'>Artificial Intelligence</option>
-        <option value='3'>Mobile Development</option>
-        <option value='4'>Gadgets</option>
-        <option value='5'>Cybersecurity</option>
-        <option value='6'>Programming Tips</option>
+        <option value="1">Web Development</option>
+        <option value="2">Artificial Intelligence</option>
+        <option value="3">Mobile Development</option>
+        <option value="4">Gadgets</option>
+        <option value="5">Cybersecurity</option>
+        <option value="6">Programming Tips</option>
       </select>
       <br /><br />
       <button onclick="createPost()">Submit Post</button>
@@ -43,6 +52,79 @@
       <button onclick="fetchPosts()">Load Posts</button>
       <div id="posts"></div>
     </div>
+
+    <div class="modal fade" id="editPostModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Post</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="editPostForm">
+              <input type="hidden" id="edit-post-id" />
+              <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="modal-post-title"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea
+                  class="form-control"
+                  id="modal-post-content"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select class="form-select" id="modal-categories" required>
+                  <option value="1">Web Development</option>
+                  <option value="2">Artificial Intelligence</option>
+                  <option value="3">Mobile Development</option>
+                  <option value="4">Gadgets</option>
+                  <option value="5">Cybersecurity</option>
+                  <option value="6">Programming Tips</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              onclick="saveButton()"
+              class="btn btn-success"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="./assets/script.js"></script>
   </body>

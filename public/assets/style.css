@@ -76,6 +76,73 @@ input[type='submit'] {
   display: none;
 }
 
+.post-card{
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    font-family: Arial, Helvetica, sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.post-title{
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 22px;
+}
+
+.post-content{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.post-meta{
+    display: block;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.post-actions{
+    display: flex;
+    gap: 10px;
+}
+
+.btn{
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.edit-btn{
+    background: #4CAF50;
+    color: white;
+}
+
+.edit-btn:hover{
+    background: #43a047;
+}
+
+.delete-btn{
+    background: #e53935;
+    color: white;
+}
+
+.delete-btn:hover{
+    background: #d32f2f;
+}
+
 .section-container {
   padding: 50px 0;
 }

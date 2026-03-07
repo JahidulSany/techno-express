@@ -93,17 +93,20 @@ function fetchPosts() {
   })
     .then((res) => res.json())
     .then((posts) => {
+      console.log(posts);
       const postsContainer = document.getElementById('posts');
       postsContainer.innerHTML = '';
       posts.forEach((post) => {
         const article = document.createElement('article');
-        article.innerHTML = `<h3>${post.title}</h3><p>${
-          post.content
-        }</p><small>By: ${post.userId} on ${new Date(
-          post.createdOn,
-        ).toLocaleString()}</small>
-        <button onclick="editPost">Edit</button> <button onclick="deletePost">Delete</button>
-        `;
+        article.innerHTML = `
+        <div class="post-card">
+            <h3 class="post-title">${post.title}</h3>
+            <p class="post-content">${post.content}</p>
+            <div class="post-actions">
+                <button class="btn btn-primary" onclick='openEditModal(${JSON.stringify(post)})'>Edit</button>
+                <button class="btn btn-danger" onclick="deletePost(${post.id})">Delete</button>
+            </div>
+        </div>`;
         postsContainer.appendChild(article);
       });
     });
@@ -134,10 +137,41 @@ function createPost() {
   document.getElementById('post-content').value = '';
 }
 
-function editPost(){
-
+// 1. Fill the modal with data and show it
+function openEditModal(post) {
+  document.getElementById('edit-post-id').value = post.id;
+  document.getElementById('modal-post-title').value = post.title;
+  document.getElementById('modal-post-content').value = post.content;
+  document.getElementById('modal-categories').value = post.categoryId;
+  
+  const myModal = new bootstrap.Modal(document.getElementById('editPostModal'));
+  myModal.show();
 }
 
-function deletePost(){
-    
+// 2. Collect data from modal and send PUT request
+function saveButton() {
+  const id = document.getElementById('edit-post-id').value;
+  const title = document.getElementById('modal-post-title').value;
+  const content = document.getElementById('modal-post-content').value;
+  const categoryId = document.getElementById('modal-categories').value;
+
+  fetch(`http://localhost:3001/api/posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ title, content, categoryId }),
+  })
+    .then((res) => {
+      if (res.ok) {
+        alert('Post updated');
+        // Close modal
+        const modalElement = document.getElementById('editPostModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+        // Refresh list
+        fetchPosts();
+      }
+    });
 }
