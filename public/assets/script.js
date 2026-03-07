@@ -1,3 +1,8 @@
+// Set current year in footer
+const yearSpan = document.getElementById('year');
+const currentYear = new Date().getFullYear();
+yearSpan.textContent = currentYear;
+
 let token = localStorage.getItem('authToken');
 
 document.addEventListener('DOMContentLoaded', () => {
