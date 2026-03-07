@@ -22,17 +22,30 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
-// Route to get all posts
-router.get('/', async (req, res) => {
+// Route to get all posts and Filter posts by categoryId
+router.get("/", async (req, res) => {
+  const categoryId = req.query.categoryId;
+
   try {
-    const posts = await Post.findAll();
+    let posts;
+
+    if (categoryId) {
+      posts = await Post.findAll({
+        where: { categoryId: categoryId }
+      });
+    } else {
+      posts = await Post.findAll();
+    }
 
     res.json(posts);
   } catch (error) {
-    res.status(500).json({ message: 'Error retrieving posts', error });
+    res.status(500).json({ message: "Error fetching posts" });
   }
 });
 
+
+
+// Route to get a specific post by ID
 router.get('/:id', async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id);
