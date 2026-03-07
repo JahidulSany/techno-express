@@ -82,16 +82,41 @@ function fetchPosts() {
   })
     .then((res) => res.json())
     .then((posts) => {
+      console.log(posts);
       const postsContainer = document.getElementById('posts');
       postsContainer.innerHTML = '';
       posts.forEach((post) => {
-        const div = document.createElement('div');
-        div.innerHTML = `<h3>${post.title}</h3><p>${
+        const article = document.createElement('article');
+        article.innerHTML = `<h3>${post.title}</h3><p>${
           post.content
-        }</p><small>By: ${post.postedBy} on ${new Date(
-          post.createdOn,
+        }</p><small>By: ${post.userId} on ${new Date(
+          post.createdAt,
         ).toLocaleString()}</small>`;
-        postsContainer.appendChild(div);
+        postsContainer.appendChild(article);
       });
     });
+}
+
+function createPost() {
+  const title = document.getElementById('post-title').value;
+  const content = document.getElementById('post-content').value;
+  if (!title || !content) {
+    alert('You must enter value');
+    return;
+  }
+  fetch('http://localhost:3001/api/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ title, content }),
+  })
+    .then((res) => res.json())
+    .then(() => {
+      alert('Post created successfully');
+      fetchPosts();
+    });
+  document.getElementById('post-title').value = '';
+  document.getElementById('post-content').value = '';
 }
