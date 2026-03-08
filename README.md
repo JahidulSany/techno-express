@@ -6,7 +6,6 @@ The application allows users to register, login, create posts, edit posts, delet
 This project demonstrates authentication, REST APIs, CRUD operations, and category-based filtering.
 
 Github Repo: https://github.com/JahidulSany/techno-express
-Live Link: https://techno-express.onrender.com
 
 
 # 💥 Features
