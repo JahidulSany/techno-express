@@ -16,12 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
 function register() {
   const username = document.getElementById('username').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  fetch('http://localhost:3001/api/users', {
+  fetch(`/api/users`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password }),
@@ -46,7 +47,7 @@ function register() {
 function login() {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
-  fetch('http://localhost:3001/api/users/login', {
+  fetch(`/api/users/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -79,7 +80,7 @@ function login() {
 }
 
 function logout() {
-  fetch('http://localhost:3001/api/users/logout', {
+  fetch(`/api/users/logout`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
   }).then(() => {
@@ -92,7 +93,7 @@ function logout() {
 }
 
 function fetchPosts(categoryId = 'all'.toLocaleLowerCase()) {
-  let url = 'http://localhost:3001/api/posts';
+  let url = `/api/posts`;
 
   if (categoryId !== 'all') {
     url = url + `?categoryId=${categoryId}`;
@@ -130,7 +131,7 @@ function createPost() {
     alert('You must enter value');
     return;
   }
-  fetch('http://localhost:3001/api/posts', {
+  fetch(`/api/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -171,7 +172,7 @@ function saveEditedPost() {
   const content = modalPostContent.value;
   const categoryId = modalPostCategories.value;
 
-  fetch(`http://localhost:3001/api/posts/${id}`, {
+  fetch(`/api/posts/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -192,7 +193,7 @@ function saveEditedPost() {
 }
 
 function deletePost(id) {
-  fetch(`http://localhost:3001/api/posts/${id}`, {
+  fetch(`/api/posts/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${token}`,
