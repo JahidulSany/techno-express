@@ -8,50 +8,49 @@ This project demonstrates authentication, REST APIs, CRUD operations, and catego
 Github Repo: https://github.com/JahidulSany/techno-express
 Live Link: https://techno-express.onrender.com
 
-
 # 💥 Features
 
 ⦿ Authentication
-	•	User Registration
-	•	User Login
-	•	User Logout
-	•	Token-based authentication using JWT
+• User Registration
+• User Login
+• User Logout
+• Token-based authentication using JWT
 
 ⦿ Blog Post Management
-	•	Create new blog posts
-	•	Edit existing posts
-	•	Delete posts
-	•	View all blog posts
+• Create new blog posts
+• Edit existing posts
+• Delete posts
+• View all blog posts
 
 ⦿ Category Filtering
-	•	Filter blog posts by category
-	•	Dynamic frontend filtering
-	•	Backend API filtering with query parameters
+• Filter blog posts by category
+• Dynamic frontend filtering
+• Backend API filtering with query parameters
 
 ⦿ Categories Included
-	•	Web Development
-	•	Artificial Intelligence
-	•	Mobile Development
-	•	Gadgets
-	•	Cybersecurity
-	•	Programming Tips
+• Web Development
+• Artificial Intelligence
+• Mobile Development
+• Gadgets
+• Cybersecurity
+• Programming Tips
 
 # 💻 Tech Stack
 
 ⦿ Frontend
-	•	HTML5
-	•	CSS3
-	•	Bootstrap 5
-	•	Vanilla JavaScript
+• HTML5
+• CSS3
+• Bootstrap 5
+• Vanilla JavaScript
 
 ⦿ Backend
-	•	Node.js
-	•	Express.js
-	•	Sequelize ORM
-	•	MySQL
+• Node.js
+• Express.js
+• Sequelize ORM
+• MySQL
 
 ⦿ Authentication
-	•	JSON Web Token (JWT)
+• JSON Web Token (JWT)
 
 # Installation
 
@@ -60,7 +59,7 @@ Live Link: https://techno-express.onrender.com
 ```sh
     git clone https://github.com/JahidulSany/techno-express.git
 
-    cd techno-express  
+    cd techno-express
 
 ```
 
@@ -72,15 +71,18 @@ Live Link: https://techno-express.onrender.com
 
 3. Configure Database
 
-Create a MySQL database and update your database configuration.
+Create a MySQL / PostgresSQl database and update your database configuration.
 
 Example Configurations:
 
 ```sh
-    DB_NAME=blogs_db
-    DB_USER=root
-    DB_PASSWORD=yourpassword
-    DB_HOST=localhost
+	JWT_SECRET=yoursecretkey
+	DB_DATABASE=blogs_db
+	DB_USERNAME=root || postgres
+	DB_PASSWORD=yourpassword
+	DB_HOST=localhost
+	DB_DIALECT=mysql || postgres
+	DB_PORT=3306 || 5432
 ```
 
 4. Run the Backend Server
@@ -88,6 +90,7 @@ Example Configurations:
 ```sh
 npm start
 ```
+
 5. Server will run on
 
 ```sh
@@ -97,10 +100,10 @@ npm start
 5. Run the Frontend
 
 Open the frontend folder and run the application using Live Server or open:
+
 ```sh
     index.html
 ```
-
 
 # 🚩 API Endpoints
 
@@ -128,31 +131,37 @@ Open the frontend folder and run the application using Live Server or open:
 🛠️ Tech Blog Posts
 
 => Get All Posts
+
 ```sh
     GET /api/posts
 ```
 
 => Get a single Post
+
 ```sh
     POGETST /api/posts/:id
 ```
 
 => Get Posts by Category
+
 ```sh
     GET /api/posts?categoryId=2
 ```
 
 => Create Post
+
 ```sh
     POST /api/posts
 ```
 
 => Update Post
+
 ```sh
     PUT /api/posts/:id
 ```
 
 => Delete Post
+
 ```sh
     Delete /api/posts/:id
 ```
