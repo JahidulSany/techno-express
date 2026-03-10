@@ -9,10 +9,11 @@ const { authMiddleware } = require('../utils/auth');
 router.post('/', authMiddleware, async (req, res) => {
   try {
     const { title, content, categoryId } = req.body;
+
     const post = await Post.create({
       title,
       content,
-      categoryId,
+      categoryId: parseInt(categoryId),
       userId: req.user.id,
     });
 
@@ -23,7 +24,7 @@ router.post('/', authMiddleware, async (req, res) => {
 });
 
 // Route to get all posts and Filter posts by categoryId
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const categoryId = req.query.categoryId;
 
   try {
@@ -31,7 +32,7 @@ router.get("/", async (req, res) => {
 
     if (categoryId) {
       posts = await Post.findAll({
-        where: { categoryId: categoryId }
+        where: { categoryId: categoryId },
       });
     } else {
       posts = await Post.findAll();
@@ -39,11 +40,9 @@ router.get("/", async (req, res) => {
 
     res.json(posts);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching posts" });
+    res.status(500).json({ message: 'Error fetching posts' });
   }
 });
-
-
 
 // Route to get a specific post by ID
 router.get('/:id', async (req, res) => {
@@ -56,30 +55,47 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route to update a post
-router.put('/:id', async (req, res) => {
+router.put('/:id', authMiddleware, async (req, res) => {
   try {
-    const { title, content, userId } = req.body;
-    const post = await Post.update(
-      { title, content, userId },
-      { where: { id: req.params.id } },
-    );
+    const { title, content, categoryId } = req.body;
+
+    // Only update if ID matches AND userId matches the logged-in user
+    const post = await Post.findOne({
+      where: { id: req.params.id, userId: req.user.id },
+    });
+
+    if (!post) {
+      return res.status(403).json({ error: 'Unauthorized or Post not found' });
+    }
+
+    await post.update({
+      title,
+      content,
+      categoryId: parseInt(categoryId),
+    });
     res.json(post);
+
   } catch (error) {
     res.status(500).json({ error: 'Error updating post' });
   }
 });
 
 // Route to delete a post
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
   try {
-    const post = await Post.destroy({ where: { id: req.params.id } });
-    res.json(post);
+    const deleted = await Post.destroy({
+      where: { id: req.params.id, userId: req.user.id },
+    });
+
+    if (deleted) {
+      res.json({ message: 'Post deleted' });
+    } else {
+      res.status(403).json({ error: 'Unauthorized to delete this post' });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Error deleting post' });
   }
 });
-
-
 
 // export the router
 module.exports = router;

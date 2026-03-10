@@ -4,15 +4,15 @@ const SECRET_KEY = process.env.JWT_SECRET;
 const expiration = '2h';
 
 const authMiddleware = (req, res, next) => {
-  let token = req.body?.token || req.query?.token || req.headers?.authorization;
+  let token = req.headers?.authorization;
   console.log('token: ' + token);
 
-  if (token && req.headers.authorization) {
+  if (token) {
     token = token.split(' ').pop().trim();
   }
 
   if (!token) {
-    res.status(400).json({ message: 'Bearer Token not supplied or invalid' });
+    res.status(401).json({ message: 'Bearer Token not supplied or invalid' });
     return;
   }
 
@@ -21,11 +21,8 @@ const authMiddleware = (req, res, next) => {
     req.user = data;
     next();
   } catch (err) {
-    console.log('Invalid token');
-    res.status(400).json({ message: 'Invalid token: ' + err.message });
+    return res.status(403).json({ message: 'Invalid token: ' + err.message });
   }
-
-  return req;
 };
 
 const signToken = (user) => {

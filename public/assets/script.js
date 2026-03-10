@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
 function register() {
   const username = document.getElementById('username').value;
   const email = document.getElementById('email').value;
@@ -93,7 +92,7 @@ function logout() {
 }
 
 function fetchPosts(categoryId = 'all'.toLocaleLowerCase()) {
-  let url = `/api/posts`;
+  let url = '/api/posts';
 
   if (categoryId !== 'all') {
     url = url + `?categoryId=${categoryId}`;
@@ -127,11 +126,13 @@ function createPost() {
   const title = document.getElementById('post-title').value;
   const content = document.getElementById('post-content').value;
   const categoryId = document.getElementById('categories').value;
+
   if (!title || !content || !categoryId) {
     alert('You must enter value');
     return;
   }
-  fetch(`/api/posts`, {
+
+  fetch('/api/posts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -188,6 +189,8 @@ function saveEditedPost() {
       modalInstance.hide();
       // Refresh list
       fetchPosts();
+    } else {
+      alert('Failed to update: You might not be the owner.');
     }
   });
 }
@@ -200,8 +203,8 @@ function deletePost(id) {
     },
   })
     .then((res) => res.json())
-    .then(() => {
-      alert('Post deleted');
+    .then((data) => {
+      alert(data.message || 'Post deleted');
       fetchPosts();
     });
 }
@@ -214,9 +217,9 @@ filterButtons.forEach((singleFilterButton) => {
     console.log(event.target.dataset);
 
     const categoryId = event.target.dataset.category;
-    
+
     console.log(categoryId);
-    
+
     document
       .querySelectorAll('#category-filters button')
       .forEach((button) => button.classList.remove('active', 'btn-primary'));
