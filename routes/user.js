@@ -5,11 +5,17 @@ const { signToken, authMiddleware } = require('../utils/auth');
 // Get current authenticated user
 router.get('/me', authMiddleware, async (req, res) => {
   try {
-    const user = await User.getOne(req.user.id);
-    if (!user) return res.status(401).json({ message: 'Token expired' });
+    const user = await User.findByPk(req.user.id, {
+      attributes: { exclude: ['password'] },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     return res.status(200).json({ user });
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -17,6 +23,7 @@ router.get('/me', authMiddleware, async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
+
     if (!userData) {
       res
         .status(400)
@@ -55,8 +62,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!userData) {
-      res.status(404).json({ message: 'No User found with this id' });
-      return;
+      return res.status(404).json({ message: 'No User found with this id' });
     }
 
     res.status(200).json(userData);
@@ -91,6 +97,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', authMiddleware, async (req, res) => {
   try {
     const userData = await User.update(req.body, {
+      individualHooks: true,
       where: {
         id: req.params.id,
       },
