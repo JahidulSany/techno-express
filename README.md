@@ -6,6 +6,7 @@ The platform allows users to register, authenticate, create blog posts, edit pos
 
 This project demonstrates authentication, RESTful APIs, CRUD operations, and category-based filtering in a modern full-stack application.
 
+✨ Features
 
 ✨ Features
 
@@ -106,7 +107,6 @@ Logout User
 
 ```sh
     POST /api/users/logout
-
 ```
 
 📝 Blog Posts

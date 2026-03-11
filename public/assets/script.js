@@ -21,7 +21,7 @@ function register() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  fetch('http://localhost:3001/api/users', {
+  fetch(`/api/users`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, email, password }),
@@ -191,6 +191,8 @@ function saveEditedPost() {
       modalInstance.hide();
       // Refresh list
       fetchPosts();
+    } else {
+      alert('Failed to update: You might not be the owner.');
     }
   });
 }
@@ -203,8 +205,8 @@ function deletePost(id) {
     },
   })
     .then((res) => res.json())
-    .then(() => {
-      alert('Post deleted');
+    .then((data) => {
+      alert(data.message || 'Post deleted');
       fetchPosts();
     });
 }
