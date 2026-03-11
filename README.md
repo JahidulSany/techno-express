@@ -1,169 +1,161 @@
-# TechnoExpress - Full stack blog platform
+🚀 TechnoExpress – Full Stack Blog Platform
 
-A full-stack Blog Post Management System built using Node.js, Express, Sequelize, and MySQL with a Bootstrap-based frontend.
-The application allows users to register, login, create posts, edit posts, delete posts, and filter posts by category.
+TechnoExpress is a full-stack blog management platform built using Node.js, Express, Sequelize, and PostgreSQL/MySQL, with a Bootstrap-powered frontend.
 
-This project demonstrates authentication, REST APIs, CRUD operations, and category-based filtering.
+The platform allows users to register, authenticate, create blog posts, edit posts, delete posts, and filter posts by category.
 
-Github Repo: https://github.com/JahidulSany/techno-express
+This project demonstrates authentication, RESTful APIs, CRUD operations, and category-based filtering in a modern full-stack application.
 
 
-# 💥 Features
+✨ Features
 
-⦿ Authentication
-	•	User Registration
-	•	User Login
-	•	User Logout
-	•	Token-based authentication using JWT
+🔐 Authentication
+• User Registration
+• User Login
+• User Logout
+• Token-based authentication using JWT
 
-⦿ Blog Post Management
-	•	Create new blog posts
-	•	Edit existing posts
-	•	Delete posts
-	•	View all blog posts
+📝 Blog Post Management
+• Create new blog posts
+• Edit existing posts
+• Delete posts
+• View all blog posts
 
-⦿ Category Filtering
-	•	Filter blog posts by category
-	•	Dynamic frontend filtering
-	•	Backend API filtering with query parameters
+🏷 Category Filtering
+• Filter blog posts by category
+• Dynamic frontend filtering
+• Backend API filtering with query parameters
 
-⦿ Categories Included
-	•	Web Development
-	•	Artificial Intelligence
-	•	Mobile Development
-	•	Gadgets
-	•	Cybersecurity
-	•	Programming Tips
+📚 Available Categories
+• Web Development
+• Artificial Intelligence
+• Mobile Development
+• Gadgets
+• Cybersecurity
+• Programming Tips
 
-# 💻 Tech Stack
+💻 Tech Stack
 
-⦿ Frontend
-	•	HTML5
-	•	CSS3
-	•	Bootstrap 5
-	•	Vanilla JavaScript
+Frontend
+• HTML5
+• CSS3
+• Bootstrap 5
+• Vanilla JavaScript
 
-⦿ Backend
-	•	Node.js
-	•	Express.js
-	•	Sequelize ORM
-	•	MySQL
+Backend
+• Node.js
+• Express.js
+• Sequelize ORM
+• PostgreSQL / MySQL
 
-⦿ Authentication
-	•	JSON Web Token (JWT)
+Authentication
+• JSON Web Token (JWT)
 
 # Installation
 
-1. Clone the Repository
-
 ```sh
     git clone https://github.com/JahidulSany/techno-express.git
-
-    cd techno-express  
-
+	cd techno-express
 ```
 
 2. Install Backend Dependencies
-
 ```sh
-    npm install
+	npm install
 ```
 
 3. Configure Database
 
-Create a MySQL database and update your database configuration.
-
-Example Configurations:
+Create a PostgreSQL or MySQL database and configure your environment variables.
+Example .env configuration:
 
 ```sh
-    DB_NAME=blogs_db
-    DB_USER=root
-    DB_PASSWORD=yourpassword
-    DB_HOST=localhost
+	JWT_SECRET=yoursecretkey
+
+	DB_DATABASE=blogs_db
+	DB_USERNAME=root
+	DB_PASSWORD=yourpassword
+	DB_HOST=localhost
+	DB_DIALECT=mysql
+	DB_PORT=3306
 ```
 
 4. Run the Backend Server
-
-```sh
-npm start
-```
-5. Server will run on
-
-```sh
-    http://localhost:3001
-```
-
-5. Run the Frontend
-
 Open the frontend folder and run the application using Live Server or open:
+
 ```sh
-    index.html
+    public/index.html
 ```
 
+📡 API Endpoints
 
-# 🚩 API Endpoints
+👤 User Authentication
 
-⦿ User Authentication
-
-=> Register User
+Register User
 
 ```sh
     POST /api/users
 ```
 
-=> Login User
+Login User
 
 ```sh
     POST /api/users/login
 ```
 
-=> Logout User
+Logout User
 
 ```sh
     POST /api/users/logout
 
 ```
 
-🛠️ Tech Blog Posts
+📝 Blog Posts
 
-=> Get All Posts
+Get All Posts
+
 ```sh
     GET /api/posts
 ```
 
-=> Get a single Post
+Get single Post
+
 ```sh
-    POGETST /api/posts/:id
+    POST /api/posts/:id
 ```
 
-=> Get Posts by Category
+Get Posts by Category
+
 ```sh
     GET /api/posts?categoryId=2
 ```
 
-=> Create Post
+Create Post
+
 ```sh
     POST /api/posts
 ```
 
-=> Update Post
+Update Post
+
 ```sh
     PUT /api/posts/:id
 ```
 
-=> Delete Post
+Delete Post
+
 ```sh
     Delete /api/posts/:id
 ```
 
-✍️ Author
+👨‍💻 Author
 
-Developed by Jahidul Sany, A full stack developer based in the UK, England.
+Jahidul Sany
+Full Stack Developer based in England, UK
+
+📧 Email: jahidulsanypro@gmail.com
+
+Feel free to connect if you’d like to collaborate or discuss opportunities.
 
 ⸻
 
-📇 Contact:
-
-Feel free to reach out if you’d like to connect or work together! 📧 Email: jahidulsanypro@gmail.com
-
-👏 Thanks for checking out! I hope it gives you a strong sense of my skills and capabilities.
+⭐ If you like this project, consider giving it a star on GitHub!

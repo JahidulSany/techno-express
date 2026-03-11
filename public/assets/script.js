@@ -46,7 +46,7 @@ function register() {
 function login() {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
-  fetch('http://localhost:3001/api/users/login', {
+  fetch('/api/users/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -79,7 +79,7 @@ function login() {
 }
 
 function logout() {
-  fetch('http://localhost:3001/api/users/logout', {
+  fetch('/api/users/logout', {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
   }).then(() => {
@@ -92,7 +92,7 @@ function logout() {
 }
 
 function fetchPosts(categoryId = 'all'.toLocaleLowerCase()) {
-  let url = 'http://localhost:3001/api/posts';
+  let url = '/api/posts';
 
   if (categoryId !== 'all') {
     url = url + `?categoryId=${categoryId}`;
@@ -126,11 +126,13 @@ function createPost() {
   const title = document.getElementById('post-title').value;
   const content = document.getElementById('post-content').value;
   const categoryId = document.getElementById('categories').value;
+
   if (!title || !content || !categoryId) {
     alert('You must enter value');
     return;
   }
-  fetch('http://localhost:3001/api/posts', {
+
+  fetch('/api/posts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -143,8 +145,10 @@ function createPost() {
       alert('Post created successfully');
       fetchPosts();
     });
+
   document.getElementById('post-title').value = '';
   document.getElementById('post-content').value = '';
+  document.getElementById('categories').value = '';
 }
 
 // Edit Post Modal's DOM Elements
@@ -171,7 +175,7 @@ function saveEditedPost() {
   const content = modalPostContent.value;
   const categoryId = modalPostCategories.value;
 
-  fetch(`http://localhost:3001/api/posts/${id}`, {
+  fetch(`/api/posts/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -192,7 +196,7 @@ function saveEditedPost() {
 }
 
 function deletePost(id) {
-  fetch(`http://localhost:3001/api/posts/${id}`, {
+  fetch(`/api/posts/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -213,9 +217,9 @@ filterButtons.forEach((singleFilterButton) => {
     console.log(event.target.dataset);
 
     const categoryId = event.target.dataset.category;
-    
+
     console.log(categoryId);
-    
+
     document
       .querySelectorAll('#category-filters button')
       .forEach((button) => button.classList.remove('active', 'btn-primary'));
