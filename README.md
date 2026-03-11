@@ -8,8 +8,6 @@ This project demonstrates authentication, RESTful APIs, CRUD operations, and cat
 
 ✨ Features
 
-✨ Features
-
 🔐 Authentication
 • User Registration
 • User Login
